@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container, Logo, LogoutBtn} from '../index'
+import {Container, LogoutBtn} from '../index'
 import { Link } from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -45,7 +45,7 @@ function Header() {
           <div className='mr-4'>
             <Link to='/'>
             <img src={image} alt="" width='70px' />
-           {/*   <Logo width='70px' src={image}  />*/}
+      
 
               </Link>
           </div>
