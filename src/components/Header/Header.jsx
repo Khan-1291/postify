@@ -44,9 +44,10 @@ function Header() {
         <nav className='flex'>
           <div className='mr-4'>
             <Link to='/'>
-            <img src="../../public/logo.png" alt="" width='70px' />
       
-
+ <span className="inline-block w-full max-w-[100px] text-blue-600">
+                    Postify 
+                    </span>
               </Link>
           </div>
           <ul className='flex ml-auto'>
