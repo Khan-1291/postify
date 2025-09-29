@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import image from '../../images/logo.png'
+
 
 
 function Footer() {
@@ -14,7 +14,7 @@ function Footer() {
                     <div className="w-full p-6 md:w-1/2 lg:w-5/12">
                         <div className="flex h-full flex-col justify-between">
                             <div className="mb-4 inline-flex items-center">
-                            <img src={image} width='80px' alt="" />
+                            <img src="../../public/logo.png" width='80px' alt="" />
                             </div>
                             <div>
                                 <p className="text-sm text-gray-600">

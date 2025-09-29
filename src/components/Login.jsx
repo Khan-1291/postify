@@ -5,7 +5,7 @@ import {Button, Input} from "./index"
 import {useDispatch} from "react-redux"
 import authService from "../appwrite/auth"
 import {useForm} from "react-hook-form"
-import imgage from '../images/Logo.png'
+
 
 
 function Login() {
@@ -35,7 +35,7 @@ function Login() {
         <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
         <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
-                    <img src={imgage} alt="" />
+                    <img src="../../public/logo.png" alt="" />
                     </span>
         </div>
         <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
