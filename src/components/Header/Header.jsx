@@ -3,6 +3,7 @@ import {Container, LogoutBtn} from '../index'
 import { Link } from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import logo from "../../assestes/logo.png"
 
 
 function Header() {
@@ -46,7 +47,7 @@ function Header() {
             <Link to='/'>
       
  <span className="inline-block w-full max-w-[100px] text-blue-600">
-                    Postify 
+                    <img src={logo} alt="" />
                     </span>
               </Link>
           </div>
