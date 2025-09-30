@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logo from "../../assestes/logo.png"
+
+
 
 
 
@@ -15,7 +18,7 @@ function Footer() {
                         <div className="flex h-full flex-col justify-between">
                             <div className="mb-4 inline-flex items-center">
                            <span className="inline-block w-full max-w-[100px] text-blue-600">
-                    Postify 
+                    <img src={logo} alt="" />
                     </span> 
                             </div>
                             <div>
