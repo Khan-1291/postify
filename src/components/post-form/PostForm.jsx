@@ -18,7 +18,7 @@ export default function PostForm({ post }) {
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
 
-    const submit = async (data) => {
+  {/*  const submit = async (data) => {
         if (post) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
@@ -47,7 +47,72 @@ export default function PostForm({ post }) {
                 }
             }
         }
-    };
+    };  */}
+
+    const submit = async (data) => {
+    try {
+        if (post) {
+            // Update existing post
+            const file = data.image?.[0] 
+                ? await appwriteService.uploadFile(data.image[0]) 
+                : null;
+
+            console.log("Uploaded file:", file);
+
+            if (file) {
+                // delete old image
+                await appwriteService.deleteFile(post.featuredImage);
+            }
+
+            const dbPost = await appwriteService.updatePost(post.$id, {
+                ...data,
+                featuredImage: file?.$id || post.featuredImage, // keep old if no new file
+            });
+
+            console.log("Updated post:", dbPost);
+
+            if (dbPost?.$id) {
+                navigate(`/post/${dbPost.$id}`);
+            } else {
+                console.error("Update failed: dbPost is undefined", dbPost);
+            }
+
+        } else {
+            // Create new post
+            const file = data.image?.[0] 
+                ? await appwriteService.uploadFile(data.image[0]) 
+                : null;
+
+            console.log("Uploaded file:", file);
+
+            if (!userData?.$id) {
+                console.error("User not logged in → userData is null or missing $id");
+                return;
+            }
+
+            if (file?.$id) {
+                data.featuredImage = file.$id;
+
+                const dbPost = await appwriteService.createPost({
+                    ...data,
+                    userId: userData.$id,
+                });
+
+                console.log("Created post:", dbPost);
+
+                if (dbPost?.$id) {
+                    navigate(`/post/${dbPost.$id}`);
+                } else {
+                    console.error("Create failed: dbPost is undefined", dbPost);
+                }
+            } else {
+                console.error("File upload failed → no file returned.");
+            }
+        }
+    } catch (err) {
+        console.error("Submit error:", err);
+    }
+};
 
     const slugTransform = useCallback((value) => {
         if (value && typeof value === "string")
